@@ -1,0 +1,5 @@
+This is a list of all the free images/resources that I have used in this project.
+Without the people who made those resources this project would be a JavaScript file and would not have much in the way of graphics.
+
+• https://www.pngkey.com/download/u2e6e6r5r5w7w7e6_interior-overview-2017-bmw-230i-coupe/ for the inside of car image
+• HUE JUMPER - By Frank Force for the 'race' minigame

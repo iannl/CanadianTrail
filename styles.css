@@ -1,0 +1,60 @@
+h1 {
+    font-family: 'Courier New', Courier, monospace;
+    font-variant: small-caps;
+    font-style: oblique;
+    color: darkmagenta;
+    background: linear-gradient(to right, #33ccff 0%, #ff99cc 100%);
+    text-align: center;
+    width: 100%;
+}
+
+#game {
+    background-color: darkblue;
+}
+
+#car {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    animation-fill-mode: forwards;
+    animation: rotatecar 1.5s normal, movecar 2s normal;
+}
+
+/*#car {
+    animation-direction: reverse;
+    animation-fill-mode: forwards;
+    animation: movecar 1s normal;
+}*/
+
+@keyframes rotatecar {
+    0%   {-webkit-transform: scaleX(1);
+    transform: scaleX(1);}
+    100% {-webkit-transform: scaleX(-1);
+    transform: scaleX(-1);}
+}
+
+@keyframes movecar {
+    0%   {margin-left: 0px;}
+    100% {margin-left: 55%;}
+}
+
+#name2 {
+    display: none;
+}
+
+button {
+    color: white;
+    background-color: black;
+    border-radius: 0px;
+    border: double;
+    min-width: 50px;
+    height: 22px;
+}
+
+button:active {
+    color: black;
+    background-color: white;
+    border-radius: 0px;
+    border: double;
+    min-width: 50px;
+    height: 22px;
+}

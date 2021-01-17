@@ -1,0 +1,7 @@
+<meta http-equiv="refresh" content="0; URL='home.html'" />
+<title>Error</title>
+<p>Sorry, there was an error loading the home page. Try <a href="home.html">clicking here.</a> If that did not work remove last slash, and try agian.</p>
+<pre>Error:
+the meta refresh did not work.
+Fixes:
+remove last slash or replace the text 'home' in the URL with home.html</pre>
