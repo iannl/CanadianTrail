@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            @font-face {
+                font-family: font1;
+                src: url(../_resources/fonts/1.otf);
+            }
+        </style>
+        <meta charset="utf-8">
+        <title>CanadianTrail — Hunting</title>
+        <script src="script.js"></script>
+        <script src="alertext.js"></script> 
+        <link rel="stylesheet" href="styles.css">
+        <script type="text/javascript">
+            var timerStart = Date.now();
+        </script>
+        <p style="font-family: font1;">CanadianTrail</p>
+    </head>
+    <body onload='reload("myImage", "1000")'>
+        <div id="image_tests" onclick="shoot('wolf')"><img id="myImage" src='../_resources/images/animals/wolf_better.gif' alt="myImage"></div>
+        <score_storage id="score">0</score_storage>
+        <script>
+        location.replace('../_resources/fonts/1.otf')
+        console.log("%cSTOP!", "color: red; font-size: 64px;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;");
+        console.log("%cThis is just a test so don't worry about the text that says 'stop.'", "");
+
+
+            configalert()
+            alertext("hi", "1000", true)
+        </script>
+    </body>
+</html>

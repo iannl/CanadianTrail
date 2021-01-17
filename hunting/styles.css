@@ -1,0 +1,8 @@
+div {
+    display: inline-block;
+    /*background-color: brown;*/
+}
+
+#score {
+    display: none;
+}

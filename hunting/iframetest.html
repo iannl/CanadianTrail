@@ -1,0 +1,22 @@
+<iframe name="frame" src="hunt_index.html"></iframe>
+<button onclick="reload()">Test</button>
+<script>
+    function reload() {
+        try {
+            alert(window.frames["frame"].document.getElementById ("score"));
+        } catch (error) {
+            alert("Error geting frame content. Error info: " + error)
+            if (error == 'SecurityError: Permission denied to access property "document" on cross-origin objec') {
+            var temp = confirm("This error cannot be fixed. Try on different device, or click 'OK' to go to original.")
+            if (temp == true) {
+                location.replace("hunt_index.html")
+            }
+            } else {
+            var temp = confirm("Error unknown. Click 'OK' to look it up on Google.")
+            if (temp == true) {
+                location.replace("https://www.google.com/search?q=" + error)
+            }
+            }
+        }
+    }
+</script>
