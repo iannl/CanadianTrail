@@ -1,0 +1,1 @@
+1. car.png and other items in _resources do not work — Needs fixing
