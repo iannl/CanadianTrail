@@ -1,1 +1,1 @@
-1. car.png and other items in _resources do not work — Needs fixing
+1. car.png and other items in _resources do not work — Needs fixing (Try renaming the _resources folder to resources, but that will take a long time as you cannot rename folders and I would have to change location)
