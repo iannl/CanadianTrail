@@ -1,8 +1,12 @@
 var waiting = false
+var frameNum = 1
+var done = 1
+var moveTime = false
+var playerlook = 'bd'
             var score = 0
             var family = []
             var randomnumber = ""
-            var waystodie = ["Heart Disease", "Stroke", "Cholera", "Smallpox", "Dysentary", "Fever", "Cancer", "Broken Bones", "Unknown Cause","Malnutrition", "Exhaustion", "Scurvy", "Bad Amusia", "Murder"]
+            var waystodie = ["Heart Disease", "Stroke", "Cholera", "Smallpox", "Dysentary", "Fever", "Cancer", "a Broken Bone", "Unknown Cause","Malnutrition", "Exhaustion", "Scurvy", "Bad Amusia", "Murder"]
             var distances = []
             var distancesA = []
             var placesarray = ["Toronto, Ontario", "Bracebridge, Ontario", "Greater Sudbury, Ontario", "RIVER CROSSING: Mississagi", "Sault Ste. Marie, Ontario", "Michipicoten, Ontario", "Jack Fish, Ontario", "Thunder Bay, Ontario", "Atikokan, Ontario", "Black Hawk, Ontario", "Kenora, Ontario","Whitemouth, Manitoba","RIVER CROSSING: Red River", "Winnipeg, Manitoba", "Portage la Prairie, Manitoba", "Brandon, Manitoba", "RIVER CROSSING: Assiniboine","Russell, Manitoba", "Yorkton, Saskatchewan", "Pile of Bones, Saskatchewan", "Moose Jaw, Saskatchewan", "Swift Current, Saskatchewan", "Maple Creek, Saskatchewan", "DECISION: Medicine Hat, Alberta","Brooks, Alberta", "Calgary, Alberta", "Canmore, Alberta", "Golden, British Columbia", "Revelstoke, British Columbia", "RIVER CROSSING: Columbia", "Salmon Arm, British Columbia", "RAFT?: Kamloops, British Columbia", "Hope, British Columbia", "Vancouver, British Columbia"]
@@ -18,12 +22,20 @@ var waiting = false
             async function load(){
                 const urlParams = new URLSearchParams(window.location.search);
                 const skipstart = urlParams.get('skip');
-                //alert(skipstart)
-                if (skipstart != 'true') {
-                    await sleep(2000)
-                    loadcanadiantrail()
+                if (urlParams.get('p') != null) {
+                    playerlook = urlParams.get('p')
+                }
+
+                if (urlParams.get('test') == 't') {
+                    moveTime = true
+                    showPlayer('d', '1', playerlook)
                 } else {
-                    entergame('t')
+                    if (skipstart != 'true') {
+                        await sleep(2000)
+                        loadcanadiantrail()
+                    } else {
+                        entergame('t')
+                    }
                 }
             }
 
@@ -138,4 +150,105 @@ function arrayRemove(arr, value) {
 function makenewgame(level) {
     alert('Mini-games do not work yet. There would normaly be a game here. Congrats on passing level ' + level + '!')
     document.getElementById('game').innerHTML='<iframe>'
+}
+
+/* 
+###################
+### Player zone ###
+###################
+*/
+
+function setVarUp() {
+    console.log(frameNum)
+    if (frameNum < 3) {
+        frameNum++
+    } else {
+        frameNum = 1
+    }
+}
+
+function showPlayer(dir, frame, looks) {
+    console.log('Showing the player...')
+    setImage('img')
+    editPlayer('resources/images/minigame/players/players_min/player_' + looks + dir + frame +'-min.png', 'img')
+}
+
+function setImage(id) {
+    console.log('Setting...')
+    document.getElementById('game').innerHTML='<img src="resources/images/loading_HQ.gif" id="'+id+'">'
+}
+
+function editPlayer(image, id) {
+    console.log('Changing...')
+    document.getElementById(id).src=image
+}
+
+async function keyCode(event) {
+    var x = event.keyCode;
+    if (x == 38) {
+        console.log("You pressed the up key!");
+        for (let i = 1; i < 4; i++) {
+            showPlayer('u', i, playerlook)
+            await sleep(100);
+            if (i === 3) {
+                showPlayer('u', 1, playerlook)
+            }
+        }
+        done = 1
+        return;
+    } else if (x == 40){
+        console.log("You pressed the down key!");
+        for (let i = 1; i < 4; i++) {
+            showPlayer('d', i, playerlook)
+            await sleep(100);
+            if (i === 3) {
+                showPlayer('d', 1, playerlook)
+            }
+        }
+        done = 1
+        return;
+    } else if (x == 37){
+        console.log("You pressed the left key!");
+        for (let i = 1; i < 4; i++) {
+            showPlayer('l', i, playerlook)
+            await sleep(100);
+            if (i === 3) {
+                showPlayer('l', 1, playerlook)
+            }
+        }
+        done = 1
+        return;
+    } else if (x == 39){
+        console.log("You pressed the right key!");
+        for (let i = 1; i < 4; i++) {
+            showPlayer('r', i, playerlook)
+            await sleep(100);
+            if (i === 3) {
+                showPlayer('r', 1, playerlook)
+            }
+        }
+        done = 1
+        return;
+    }
+}
+
+function keyUp(event) {
+    var y = event.keyCode;
+    if (y == 38) {
+        showPlayer('u', 1, playerlook)
+    } else if (y == 40){
+        showPlayer('d', 1, playerlook)
+    } else if (y == 37){
+        showPlayer('l', 1, playerlook)
+    } else if (y == 39){
+        showPlayer('r', 1, playerlook)
+    }
+}
+
+async function call(event) {
+    if (done == 1 && moveTime == true) {
+    done = 0
+    keyCode(event)
+    keyUp(event)
+    }
 }
