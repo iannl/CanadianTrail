@@ -41,7 +41,7 @@ var playerlook = 'bd'
 
             async function loadcanadiantrail() {
                 document.getElementById("game").innerHTML=loadtohtml
-                await sleep(5000)
+                await sleep(2500)
                 document.getElementById("game").innerHTML='<p class="type" style="color: white;">What do you want your name to be?</p><form onsubmit="return false"><input id="name" type="text"><button onclick="moveon()">Okay</button></form>'
                 var waiting = true
             }
